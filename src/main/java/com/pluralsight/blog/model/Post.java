@@ -7,11 +7,14 @@ import java.util.Date;
 
 @Entity
 public class Post {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String lead;
+    @Column(length=1000000) @Lob
     private String body;
     private String author;
+    @Temporal(TemporalType.DATE)
     private Date date;
 
     public Post() {
@@ -20,14 +23,11 @@ public class Post {
 
     public Post(Long id, String title, String lead, String body, String author, Date date) {
         this();
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         this.id = id;
         this.title = title;
         this.lead = lead;
-        @Column(length=1000000) @Lob
         this.body = body;
         this.author = author;
-        @Temporal(TemporalType.DATE)
         this.date = date;
     }
 
