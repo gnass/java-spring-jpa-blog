@@ -5,7 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+@Entity
 public class Post {
     private Long id;
     private String title;
@@ -20,11 +20,14 @@ public class Post {
 
     public Post(Long id, String title, String lead, String body, String author, Date date) {
         this();
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         this.id = id;
         this.title = title;
         this.lead = lead;
+        @Column(length=1000000) @Lob
         this.body = body;
         this.author = author;
+        @Temporal(TemporalType.DATE)
         this.date = date;
     }
 

@@ -2,11 +2,13 @@ package com.pluralsight.blog.data;
 
 import com.pluralsight.blog.model.Post;
 import org.springframework.stereotype.Component;
+import com.pluralsight.blog.model.Post;
+import org.springframework.data.repository.JpaRepository;
 
 import java.util.*;
 
 @Component
-public class PostRepository {
+public interface PostRepository extends JpaRepository<Post, Long> {}
 
     private final List<Post> ALL_POSTS = new ArrayList<>(Arrays.asList(
             new Post(1l, "Earbuds",
